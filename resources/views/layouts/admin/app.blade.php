@@ -100,8 +100,8 @@
                 </span>
                 <h4 class="text-section">Manage</h4>
               </li>
-              <li class="nav-item   " >
-                <a data-bs-toggle="collapse" href="">
+              <li class="nav-item @if(Route::currentRouteName() === 'admin.users') active @endif   " >
+                <a href="{{ route('admin.users') }}">
                   <i class="fas fa-layer-group"></i>
                   <p>Users</p>
                 </a>
@@ -329,9 +329,7 @@
               </nav>
 
               <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
-                <li
-                  class="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none"
-                >
+                {{-- <li class="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none" >
                   <a
                     class="nav-link dropdown-toggle"
                     data-bs-toggle="dropdown"
@@ -600,7 +598,7 @@
                       </div>
                     </div>
                   </div>
-                </li>
+                </li> --}}
 
                 <li class="nav-item topbar-user dropdown hidden-caret">
                   <a
@@ -610,15 +608,15 @@
                     aria-expanded="false"
                   >
                     <div class="avatar-sm">
-                      <img
-                        src="assets/img/profile.jpg"
-                        alt="..."
+                        <img
                         class="avatar-img rounded-circle"
-                      />
+                        src="{{ Auth::user()->avatar_url ?? asset('assets/admin/img/arashmil.jpg')  }}"
+                        alt=""
+                    >
                     </div>
                     <span class="profile-username">
-                      <span class="op-7">Hi,</span>
-                      <span class="fw-bold">Hizrian</span>
+                      <span class="op-7">Hi, </span>
+                      <span class="fw-bold">{{ Auth::user()->name ?? '' }}</span>
                     </span>
                   </a>
                   <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -627,14 +625,14 @@
                         <div class="user-box">
                           <div class="avatar-lg">
                             <img
-                              src="assets/img/profile.jpg"
+                              src="{{ Auth::user()->avatar_url ?? asset('assets/admin/img/arashmil.jpg') }}"
                               alt="image profile"
                               class="avatar-img rounded"
                             />
                           </div>
                           <div class="u-text">
-                            <h4>Hizrian</h4>
-                            <p class="text-muted">hello@example.com</p>
+                            <h4>{{ Auth::user()->name }}</h4>
+                            <p class="text-muted">{{ Auth::user()->email }}</p>
                             <a
                               href="profile.html"
                               class="btn btn-xs btn-secondary btn-sm"
@@ -651,7 +649,14 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Account Setting</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="#"
+                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                       </li>
                     </div>
                   </ul>
@@ -664,33 +669,7 @@
         <div class="container">
             @yield('content')
         </div>
-        <footer class="footer">
-          <div class="container-fluid d-flex justify-content-between">
-            <nav class="pull-left">
-              <ul class="nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="http://www.themekita.com">
-                    ThemeKita
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> Help </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> Licenses </a>
-                </li>
-              </ul>
-            </nav>
-            <div class="copyright">
-              2024, made with <i class="fa fa-heart heart text-danger"></i> by
-              <a href="http://www.themekita.com">ThemeKita</a>
-            </div>
-            <div>
-              Distributed by
-              <a target="_blank" href="https://themewagon.com/">ThemeWagon</a>.
-            </div>
-          </div>
-        </footer>
+        @include('layouts.admin.footer')
       </div>
 
       <!-- Custom template | don't include it in your project! -->
@@ -905,8 +884,7 @@
     <!-- Chart Circle -->
     <script src="{{ asset('assets/admin/js/plugin/chart-circle/circles.min.js') }}"></script>
 
-    <!-- Datatables -->
-    <script src="{{ asset('assets/admin/js/plugin/datatables/datatables.min.js') }}"></script>
+    @yield('custom_js')
 
     <!-- Bootstrap Notify -->
     <script src="{{ asset('assets/admin/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
