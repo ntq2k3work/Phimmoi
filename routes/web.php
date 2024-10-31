@@ -24,4 +24,3 @@ Auth::routes();
 
 Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth');
 
-Route::get('/admin/users',[UserController::class,'index'])->name('admin.users')->middleware('auth');

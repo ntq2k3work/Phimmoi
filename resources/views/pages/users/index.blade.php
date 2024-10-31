@@ -2,13 +2,15 @@
 @section('content')
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Basic</h4>
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4 class="card-title">User Manager</h4>
+                <button type="button" class="btn btn-success m-2">
+                  <a class="text-white" href="{{ route('admin.users.create') }}">Create</a>
+                </button>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-
                         <div class="row">
                             <div class="col-sm-12">
                                 <table id="basic-datatables" class="display table table-striped table-hover dataTable"
@@ -39,6 +41,10 @@
                                                 rowspan="1" colspan="1"
                                                 aria-label="Salary: activate to sort column ascending"
                                                 style="width: 156.047px;">Address</th>
+                                            <th class="sorting" tabindex="0" aria-controls="basic-datatables"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Salary: activate to sort column ascending"
+                                                style="width: 156.047px;">Custom</th>
                                         </tr>
                                     </thead>
 
@@ -51,6 +57,7 @@
                                                 <td>{{ $user->gender == 1 ? 'Nam' : ($user->gender == 0 ? 'Nữ' : 'Other' ) }}</td>
                                                 <td>{{ $user->birthday }}</td>
                                                 <td>{{ $user->address }}</td>
+                                                <td><button type="button" class="btn btn-outline-primary mr-2">Sửa</button><button type="button" class="btn btn-outline-danger">Xoá</button></td>
                                             </tr>
                                         @endforeach
 

@@ -17,7 +17,7 @@ class UserService {
         return $this->__userRepository->getAll();
     }
 
-    public function createUser($data) {
+    public function createUser(array $data) {
         return $this->__userRepository->create($data);
     }
 }
