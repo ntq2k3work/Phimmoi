@@ -28,6 +28,8 @@ class User extends Authenticatable
         'phone_number',
         'gender',
         'birthday',
+        'address',
+        'avatar_url',
     ];
 
     /**

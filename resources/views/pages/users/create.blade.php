@@ -78,7 +78,7 @@
 
             <div class="form-group">
                 <label for="exampleFormControlFile1">Avatar</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="avatar" />
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="avatar_url" />
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <button type="submit" class="btn btn-success">Create</button>

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\Users\UserRepository;
+use Illuminate\Support\Facades\Storage;
 
 class UserService {
 
@@ -18,6 +19,8 @@ class UserService {
     }
 
     public function createUser(array $data) {
+        $uploadedFileUrl = cloudinary()->upload($data['avatar_url']->getRealPath())->getSecurePath();
+        $data['avatar_url'] = $uploadedFileUrl;
         return $this->__userRepository->create($data);
     }
 }

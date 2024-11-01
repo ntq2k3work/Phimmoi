@@ -26,10 +26,10 @@ class CreateUserRequest extends FormRequest
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'phone_number' => 'required|string|max:15|unique:users,phone_number',
-            'birthday' => 'required|date',
+            'birthday' => 'date|before:now',
             'address' => 'nullable|string|max:255',
             'gender' => 'required',
-            'avatar_url' => 'nullable|file|image|max:2048',
+            'avatar_url' => 'nullable|image|max:2048',
         ];
     }
     public function messages(): array

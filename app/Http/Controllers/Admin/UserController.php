@@ -31,8 +31,8 @@ class UserController extends Controller
 
     public function store(CreateUserRequest $request)
     {
-        $userData = $request->only('name', 'email', 'password', 'phone_number', 'birthday', 'address', 'avatar_url', 'gender');
-        $user = $this->__userService->createUser($userData);
+        $userData = $request->validated();
+        $this->__userService->createUser($userData);
         return redirect()->route('admin.users')->with('success', 'User created successfully');
     }
 }
