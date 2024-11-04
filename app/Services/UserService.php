@@ -22,8 +22,8 @@ class UserService {
     {
         if(isset($data['avatar_url'])){
             $uploadedFileUrl = cloudinary()->upload($data['avatar_url']->getRealPath())->getSecurePath();
+            $data['avatar_url'] = $uploadedFileUrl;
         }
-        $data['avatar_url'] = $uploadedFileUrl;
         return $this->__userRepository->create($data);
     }
 
@@ -34,6 +34,11 @@ class UserService {
             $data['avatar_url'] = $uploadedFileUrl;
         }
         return $this->__userRepository->update($id, $data);
+    }
+
+    public function deleteUser($id)
+    {
+        return $this->__userRepository->delete($id);
     }
 
     public function find($id)
