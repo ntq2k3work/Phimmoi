@@ -58,3 +58,9 @@
 - role_permission
     + id_role
     + id_permission
+
+# Sweet-alert
+- Hiển thị thông báo
+
+# Cloudinary
+- Lưu trữ ảnh

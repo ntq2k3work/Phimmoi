@@ -34,14 +34,15 @@
     </script>
 
     <!-- CSS Files -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/admin/css/plugins.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/admin/css/kaiadmin.min.css') }}" />
-
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/demo.css') }}" />
   </head>
   <body>
+    @include('sweetalert::alert')
     <div class="wrapper">
       <!-- Sidebar -->
       <div class="sidebar" data-background-color="dark">
@@ -868,6 +869,9 @@
       <!-- End Custom template -->
     </div>
     <!--   Core JS Files   -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{{ asset('assets/admin/js/core/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/core/popper.min.js') }}""></script>
     <script src="{{ asset('assets/admin/js/core/bootstrap.min.js') }}"></script>
@@ -895,6 +899,7 @@
 
     <!-- Sweet Alert -->
     <script src="{{ asset('assets/admin/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
 
     <!-- Kaiadmin JS -->
     <script src="{{ asset('assets/admin/js/kaiadmin.min.js') }}"></script>

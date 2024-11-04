@@ -1,5 +1,6 @@
 @extends('layouts.admin.app')
 @section('content')
+
     <div class="col-md-12">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -57,7 +58,10 @@
                                                 <td>{{ $user->gender == 1 ? 'Nam' : ($user->gender == 0 ? 'Nữ' : 'Other' ) }}</td>
                                                 <td>{{ $user->birthday }}</td>
                                                 <td>{{ $user->address }}</td>
-                                                <td><button type="button" class="btn btn-outline-primary mr-2">Sửa</button><button type="button" class="btn btn-outline-danger">Xoá</button></td>
+                                                <td>
+                                                    @include('pages.users.edit')
+                                                    <button type="button" class="btn btn-outline-danger">Xoá</button>
+                                                </td>
                                             </tr>
                                         @endforeach
 
@@ -131,5 +135,6 @@
         $("#addRowModal").modal("hide");
       });
     });
+
   </script>
 @endsection
