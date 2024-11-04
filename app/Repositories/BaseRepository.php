@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Models\User;
+
 abstract class BaseRepository implements BaseRepositoryInterface
 {
     protected $__model;
