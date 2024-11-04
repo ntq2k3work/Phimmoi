@@ -20,7 +20,9 @@ class UserService {
 
     public function createUser(array $data)
     {
-        $uploadedFileUrl = cloudinary()->upload($data['avatar_url']->getRealPath())->getSecurePath();
+        if(isset($data['avatar_url'])){
+            $uploadedFileUrl = cloudinary()->upload($data['avatar_url']->getRealPath())->getSecurePath();
+        }
         $data['avatar_url'] = $uploadedFileUrl;
         return $this->__userRepository->create($data);
     }
