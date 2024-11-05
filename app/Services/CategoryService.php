@@ -16,4 +16,9 @@ class CategoryService {
     {
         return $this->__categoryRepository->getAll();
     }
+
+    public function createCategory(array $data)
+    {
+        return $this->__categoryRepository->create($data);
+    }
 }

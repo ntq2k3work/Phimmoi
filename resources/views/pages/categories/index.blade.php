@@ -6,7 +6,7 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h4 class="card-title">Categories Manager</h4>
                 <button type="button" class="btn btn-success m-2">
-                  <a class="text-white" href="{{ route('admin.users.create') }}">Create</a>
+                  <a class="text-white" href="{{ route('admin.categories.create') }}">Create</a>
                 </button>
             </div>
             <div class="card-body">
