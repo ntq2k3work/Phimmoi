@@ -51,11 +51,23 @@ class UserController extends Controller
     public function update($id, UpdateUserRequest $request)
     {
         $data = $request->validated();
+        dd($data);
         $check = $this->__userService->updateUser($id, $data);
         if($check){
             alert()->success('Thành công','Sửa thành công');
         }else{
             alert()->error('Thất bại','Sửa thất bại');
+        }
+        return redirect()->route('admin.users');
+    }
+
+    public function destroy($id)
+    {
+        $user = $this->__userService->deleteUser($id);
+        if($user){
+            alert()->success('Thành công','Xoá thành công');
+        }else{
+            alert()->error('Thất bại','Xoá thất bại');
         }
         return redirect()->route('admin.users');
     }

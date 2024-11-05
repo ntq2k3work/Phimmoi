@@ -60,7 +60,11 @@
                                                 <td>{{ $user->address }}</td>
                                                 <td>
                                                     @include('pages.users.edit')
-                                                    <button type="button" class="btn btn-outline-danger">Xoá</button>
+                                                    <!-- Nút Xoá với ID -->
+                                                    <form action="{{ route('admin.users.destroy',$user->id) }}" method="post">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-outline-danger" onclick="confirm('Bạn chắc chắn muốn xoá ?')">Xoá</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -136,5 +140,42 @@
       });
     });
 
+
+    function deleteRecord(id) {
+    Swal.fire({
+        title: 'Xác nhận xoá?',
+        text: "Bạn có chắc chắn muốn xoá bản ghi này không?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Xoá',
+        cancelButtonText: 'Hủy'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Thay thế URL bên dưới bằng URL mà bạn muốn gửi yêu cầu xoá
+            const deleteUrl = route('admin.users.destroy',id);
+
+            fetch(deleteUrl, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // CSRF token nếu cần
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Xử lý thành công
+                    window.location.reload(); // Hoặc cập nhật giao diện
+                } else {
+                    Swal.fire('Có lỗi xảy ra khi xoá.', '', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire('Có lỗi xảy ra khi xoá.', '', 'error');
+            });
+        }
+    });
+}
   </script>
 @endsection

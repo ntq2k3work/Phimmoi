@@ -39,7 +39,8 @@ class UpdateUserRequest extends FormRequest
             'email.max:255' => 'Email không quá 255 ký tự.',
             'email.unique' => 'Email đã tồn tại.',
             'phone_number.required' => 'S điện thoại không được để trống',
-            'phone_number.unique' => 'Số điện thoại phải duy nhất'
+            'phone_number.unique' => 'Số điện thoại phải duy nhất',
+            'birthday.before' => 'Ngày sinh phải trước ngày hiện tại'
         ];
     }
 }

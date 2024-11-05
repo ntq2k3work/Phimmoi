@@ -10,3 +10,4 @@ Route::get('admin/users/create',[UserController::class,'create'])->name('admin.u
 Route::post('admin/users/store',[UserController::class,'store'])->name('admin.users.store')->middleware('auth');
 // Route::get('admin/users/{id}/edit',[UserController::class,'edit'])->name('admin.users.edit')->middleware('auth');
 Route::post('admin/users/{id}/update',[UserController::class,'update'])->name('admin.users.update')->middleware('auth');
+Route::post('admin/users/{id}/destroy',[UserController::class,'destroy'])->name('admin.users.destroy')->middleware('auth');
