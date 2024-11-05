@@ -45,7 +45,7 @@
                                                 <td>{{ $category->updated_at }}</td>
                                                 <td>
                                                     <!-- Nút Xoá với ID -->
-                                                    <button type="submit" class="btn btn-outline-primary" >Sửa</button>
+                                                    <a href="{{ route('admin.categories.edit',$category->id) }}">Sửa</a>
                                                     <button type="submit" class="btn btn-outline-danger" >Xoá</button>
                                                 </td>
                                             </tr>

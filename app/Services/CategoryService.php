@@ -21,4 +21,15 @@ class CategoryService {
     {
         return $this->__categoryRepository->create($data);
     }
+
+    public function updateCategory($id, array $data)
+    {
+        return $this->__categoryRepository->update($id, $data);
+    }
+
+    public function getCategoryById($id)
+    {
+        return $this->__categoryRepository->findById($id);
+    }
+
 }
