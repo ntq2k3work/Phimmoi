@@ -10,7 +10,6 @@ use Tests\TestCase;
 
 class CreateUserTest extends TestCase
 {
-
     public function get_create_user_route(){
         return route('admin.users.create');
     }

@@ -51,7 +51,6 @@ class UserController extends Controller
     public function update($id, UpdateUserRequest $request)
     {
         $data = $request->validated();
-        dd($data);
         $check = $this->__userService->updateUser($id, $data);
         if($check){
             alert()->success('Thành công','Sửa thành công');
