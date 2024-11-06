@@ -32,4 +32,9 @@ class CategoryService {
         return $this->__categoryRepository->findById($id);
     }
 
+    public function deleteCategory($id)
+    {
+        return $this->__categoryRepository->delete($id);
+    }
+
 }

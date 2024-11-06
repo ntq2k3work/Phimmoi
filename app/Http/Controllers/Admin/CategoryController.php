@@ -31,8 +31,12 @@ class CategoryController extends Controller
     public function store(CreateCategoryRequest $request)
     {
         $data = $request->validated();
-        $this->__categoryService->createCategory($data);
-        alert()->success('Thành công','Thêm mới thành công');
+        $status = $this->__categoryService->createCategory($data);
+        if($status){
+            alert()->success('Thành công','Thêm thành công');
+        }else{
+            alert()->error('Thất bại','Thêm thất bại');
+        }
         return redirect()->route('admin.categories');
     }
 
@@ -45,9 +49,23 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, $id )
     {
         $data = $request->validated();
-        dd($data);
-        $this->__categoryService->updateCategory($id, $data);
-        alert()->success('Thành công','Cập nhật thành công');
+        $status = $this->__categoryService->updateCategory($id, $data);
+        if($status){
+            alert()->success('Thành công','Sửa thành công');
+        }else{
+            alert()->error('Thất bại','Sửa thất bại');
+        }
+        return redirect()->route('admin.categories');
+    }
+
+    public function destroy($id)
+    {
+        $status = $this->__categoryService->deleteCategory($id);
+        if($status){
+            alert()->success('Thành công','Xóa thành công');
+        }else{
+            alert()->error('Thất bại','Xóa thất bại');
+        }
         return redirect()->route('admin.categories');
     }
 }

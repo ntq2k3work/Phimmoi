@@ -45,8 +45,13 @@
                                                 <td>{{ $category->updated_at }}</td>
                                                 <td>
                                                     <!-- Nút Xoá với ID -->
-                                                    <a href="{{ route('admin.categories.edit',$category->id) }}">Sửa</a>
-                                                    <button type="submit" class="btn btn-outline-danger" >Xoá</button>
+                                                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-outline-primary">Sửa</a>
+                                                    <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Bạn chắc chắn muốn xoá?');">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-outline-danger">Xoá</button>
+                                                    </form>
+
                                                 </td>
                                             </tr>
                                         @endforeach
