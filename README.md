@@ -37,8 +37,8 @@
     + trailer
     + avatar_img
     + poster_img
-    + content
-    + number_episode
+    + description
+    + number_episodes
     + created_at
     + updated_at
 

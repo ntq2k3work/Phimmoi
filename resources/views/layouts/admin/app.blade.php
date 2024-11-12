@@ -117,6 +117,14 @@
                 <div class="collapse" id="base">
                 </div>
               </li>
+              <li class="nav-item @if(Route::currentRouteName() === 'admin.films') active @endif   " >
+                <a href="{{ route('admin.films') }}">
+                  <i class="fas fa-layer-group"></i>
+                  <p>Films</p>
+                </a>
+                <div class="collapse" id="base">
+                </div>
+              </li>
             </ul>
           </div>
         </div>

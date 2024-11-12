@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
@@ -29,5 +30,10 @@ class Category extends Model
     public function getUpdatedAtAttribute($value)
     {
         return Carbon::parse($value)->format('H:i d-m-Y'); // Định dạng ngày
+    }
+
+    public function film()
+    {
+        return $this->belongsToMany(Category::class,'film_category');
     }
 }
