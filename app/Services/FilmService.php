@@ -30,4 +30,11 @@ class FilmService
             return $film;
         }
     }
+
+    public function getFilmById($id)
+    {
+        $film = $this->__filmRepository->findById($id);
+        $film->load('category');
+        return $film;
+    }
 }

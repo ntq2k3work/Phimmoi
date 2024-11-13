@@ -64,7 +64,7 @@
                                                 <td>{{ $film->created_at }}</td>
                                                 <td>{{ $film->updated_at }}</td>
                                                 <td class="d-flex">
-                                                    <a href="" class="btn btn-outline-secondary">Detail</a>
+                                                    <a href="{{ route('admin.films.show',$film->id  ) }}" class="btn btn-outline-secondary">Detail</a>
                                                     @include('pages.films.edit')
                                                     <!-- Nút Xoá với ID -->
                                                     <form action="" method="post">

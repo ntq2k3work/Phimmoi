@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Film\CreateFilmRequest;
+use App\Http\Resources\FilmResources;
 use App\Services\CategoryService;
 use App\Services\FilmService;
 use Illuminate\Http\Request;
@@ -35,5 +36,12 @@ class FilmController extends Controller
         $this->__filmService->createFilm($filmData);
         alert()->success('Thành công','Thêm mới thành công');
         return redirect()->route('admin.films');
+    }
+
+    public function show($id)
+    {
+        $film = $this->__filmService->getFilmById($id);
+        $film = FilmResources::make($film);
+        return view('pages.films.show',compact('film'));
     }
 }
